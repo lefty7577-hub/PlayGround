@@ -16,3 +16,11 @@
 - 👤 [Explore the creator's projects](https://go.ondev.store/lefty7577-hub).
 - 🌍 [Create with OMGithub](https://go.ondev.store/).
 <!-- omgithub:readme:end -->
+
+## Bulut Adası
+
+A Turkish, Roblox-inspired floating-island obby. Jump between the cloud platforms, collect all six crystals, activate checkpoints, and reach the portal. The browser build runs standalone with keyboard and touch controls.
+
+- **Play in this repository:** run `./start.sh` and open the local preview.
+- **Roblox Studio version:** follow [`roblox/README.md`](roblox/README.md) and add [`roblox/BulutAdasi.server.lua`](roblox/BulutAdasi.server.lua) to `ServerScriptService`.
+- **Controls:** `WASD` + `Space` on desktop; on-screen direction and jump buttons on mobile.

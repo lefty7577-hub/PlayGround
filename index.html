@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#10162b">
+<title>Bulut Adası — Obby Macerası</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%2375f5c5'/%3E%3Cpath d='M18 42a10 10 0 0 1 1-20 14 14 0 0 1 27 3 9 9 0 0 1 0 17z' fill='%231a2446'/%3E%3C/svg%3E">
+<style>
+:root{color-scheme:dark;--ink:#f7f8ff;--muted:#a9b5d7;--glass:rgba(17,24,49,.78);--line:rgba(205,219,255,.2);--mint:#75f5c5;--pink:#ff73c8;--gold:#ffdf72}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#10162b;color:var(--ink);font-family:Inter,ui-rounded,"Arial Rounded MT Bold",system-ui,sans-serif;touch-action:none}button{font:inherit;color:inherit}#game{position:relative;width:100%;height:100%;min-height:320px;background:linear-gradient(#1a2446,#4d5685 65%,#8491b9);overflow:hidden}canvas{position:absolute;inset:0;width:100%;height:100%;display:block}.topbar{position:absolute;left:0;right:0;top:0;padding:max(16px,env(safe-area-inset-top)) 20px 0;display:flex;justify-content:space-between;align-items:flex-start;pointer-events:none}.brand,.stats,.pill{background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(14px);box-shadow:0 12px 35px #0a10254a}.brand{border-radius:18px;padding:10px 15px;display:flex;gap:11px;align-items:center}.brand-icon{width:36px;height:36px;border-radius:12px;background:linear-gradient(145deg,#8b7bff,#50e5d1);display:grid;place-items:center;font-size:19px;box-shadow:0 5px 16px #716bff55}.brand strong{display:block;font-size:14px;letter-spacing:.02em}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:.12em;text-transform:uppercase;margin-top:2px}.stats{display:flex;gap:7px;padding:7px;border-radius:17px}.stat{min-width:76px;padding:7px 10px;text-align:center;border-radius:11px;background:#ffffff0b}.stat small{display:block;color:var(--muted);font-size:9px;letter-spacing:.12em;text-transform:uppercase}.stat b{display:block;font-size:15px;margin-top:2px}.pill{position:absolute;left:50%;top:92px;transform:translateX(-50%);border-radius:99px;padding:8px 14px;font-size:12px;color:#e3e9ff;white-space:nowrap;pointer-events:none}.pill em{font-style:normal;color:var(--mint);font-weight:800}.hint{position:absolute;left:20px;bottom:19px;display:flex;gap:8px;align-items:center;color:#e8edff;font-size:12px;pointer-events:none}.key{display:inline-grid;place-items:center;padding:5px 8px;min-width:28px;border:1px solid #ffffff3a;background:#202a4dcc;border-radius:8px;font-size:11px;font-weight:800;box-shadow:0 3px 0 #11182f}.sound{position:absolute;right:20px;bottom:18px;width:42px;height:42px;border-radius:14px;border:1px solid var(--line);background:var(--glass);font-size:17px;cursor:pointer}.overlay{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(90deg,#0d142760,#0d142730 50%,#0d142760);transition:opacity .3s,visibility .3s}.overlay.hidden{opacity:0;visibility:hidden;pointer-events:none}.card{width:min(480px,calc(100vw - 32px));padding:30px;border-radius:27px;background:linear-gradient(145deg,#202a4ded,#141c36f2);border:1px solid #ffffff2a;box-shadow:0 24px 80px #080c1db0;text-align:center;backdrop-filter:blur(18px)}.eyebrow{display:inline-flex;gap:7px;align-items:center;padding:6px 11px;background:#ffffff0d;border:1px solid #ffffff16;border-radius:99px;color:#b8c6f4;font-size:10px;letter-spacing:.14em;text-transform:uppercase}.eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 11px var(--mint)}h1{font-size:clamp(35px,8vw,57px);line-height:.96;letter-spacing:-.055em;margin:19px 0 12px}h1 span{color:var(--mint)}.card p{margin:0 auto 22px;max-width:350px;color:#bdc7e4;font-size:14px;line-height:1.55}.feature-row{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:22px}.feature{font-size:11px;padding:8px 10px;background:#ffffff0b;border:1px solid #ffffff12;border-radius:10px;color:#dbe4ff}.primary{border:0;border-radius:14px;padding:14px 24px;min-width:190px;background:linear-gradient(110deg,#83f7d0,#64dff0);color:#13283a;font-weight:900;letter-spacing:.03em;box-shadow:0 9px 24px #61e9cf42;cursor:pointer;transition:transform .16s,filter .16s}.primary:hover{transform:translateY(-2px);filter:brightness(1.08)}.primary:active{transform:translateY(1px)}.micro{display:block;color:#8e9abd;font-size:10px;margin-top:13px}.toast{position:absolute;top:145px;left:50%;transform:translate(-50%,-10px);opacity:0;padding:10px 15px;border-radius:12px;background:#202a4ded;border:1px solid #ffffff27;box-shadow:0 8px 25px #0b102c66;font-size:12px;font-weight:700;transition:.3s;pointer-events:none;white-space:nowrap}.toast.show{opacity:1;transform:translate(-50%,0)}.touch-controls{position:absolute;left:16px;right:16px;bottom:max(15px,env(safe-area-inset-bottom));display:none;align-items:end;justify-content:space-between;pointer-events:none}.dpad{display:grid;grid-template-columns:repeat(3,44px);grid-template-rows:repeat(2,44px);gap:5px;pointer-events:auto}.touch-btn{border:1px solid #ffffff42;border-radius:13px;background:#18213bb8;backdrop-filter:blur(8px);font-size:17px;font-weight:800;touch-action:none;user-select:none}.touch-btn:active,.touch-btn.down{background:#75f5c58c}.dpad .up{grid-column:2}.dpad .left{grid-column:1;grid-row:2}.dpad .down{grid-column:2;grid-row:2}.dpad .right{grid-column:3;grid-row:2}.jump-btn{pointer-events:auto;width:72px;height:72px;border-radius:50%;border:2px solid #fff9;background:linear-gradient(145deg,#ff80d4dd,#856effdd);box-shadow:0 8px 24px #a665ff55;font-size:12px;font-weight:900;letter-spacing:.06em}.small-note{position:absolute;right:20px;top:94px;color:#d6def5;font-size:10px;opacity:.78;pointer-events:none}@media(max-width:680px){.topbar{padding-left:12px;padding-right:12px}.brand{padding:8px 10px;gap:8px}.brand-icon{width:31px;height:31px}.brand strong{font-size:12px}.brand small{font-size:8px}.stats{gap:4px;padding:5px}.stat{min-width:58px;padding:6px}.stat b{font-size:13px}.stat small{font-size:8px}.pill{top:78px;font-size:10px}.small-note{display:none}.touch-controls{display:flex}.hint{display:none}.sound{right:12px;bottom:12px;width:36px;height:36px}.card{padding:25px 20px}.card p{font-size:13px}.overlay{background:#0d14274c}}
+</style>
+</head>
+<body>
+<main id="game" aria-label="Bulut Adası obby oyunu">
+<canvas id="scene"></canvas>
+<header class="topbar"><div class="brand"><div class="brand-icon">☁</div><div><strong>BULUT ADASI</strong><small>obby macerası</small></div></div><div class="stats"><div class="stat"><small>Kristal</small><b id="gems">0 / 6</b></div><div class="stat"><small>Düşüş</small><b id="falls">0</b></div><div class="stat"><small>Süre</small><b id="timer">00:00</b></div></div></header>
+<div class="pill">✦ Kristalleri topla <em>·</em> portala ulaş!</div><div class="small-note">EN İYİ: <span id="best">—</span></div>
+<div class="hint"><span class="key">W A S D</span><span>hareket</span><span class="key">SPACE</span><span>zıpla</span></div><button class="sound" id="sound" aria-label="Sesi aç veya kapat">♫</button>
+<div class="touch-controls"><div class="dpad"><button class="touch-btn up" data-key="w">▲</button><button class="touch-btn left" data-key="a">◀</button><button class="touch-btn down" data-key="s">▼</button><button class="touch-btn right" data-key="d">▶</button></div><button class="jump-btn" data-key="space">ZIPLA</button></div>
+<div class="toast" id="toast"></div>
+<section class="overlay" id="overlay"><div class="card"><span class="eyebrow"><i></i> YENİ BİR DÜNYA SENİ BEKLİYOR</span><h1>Bulutların<br><span>üzerinde!</span></h1><p>Adadan adaya zıpla, parlayan kristalleri kap ve bulut portalına ulaş. Boşluğa düşersen son güvenli noktadan devam edersin.</p><div class="feature-row"><span class="feature">✦ 6 kristal</span><span class="feature">◈ 2 kontrol noktası</span><span class="feature">☁ Sonsuz gökyüzü</span></div><button class="primary" id="start">MACERAYA BAŞLA&nbsp; →</button><span class="micro">Bilgisayar: WASD + Space &nbsp;·&nbsp; Telefon: ekrandaki tuşlar</span></div></section>
+</main>
+<script>
+(()=>{
+'use strict';
+const canvas=document.getElementById('scene'),ctx=canvas.getContext('2d');
+const ui={gems:document.getElementById('gems'),falls:document.getElementById('falls'),timer:document.getElementById('timer'),best:document.getElementById('best'),overlay:document.getElementById('overlay'),toast:document.getElementById('toast')};
+const level=[
+ {x:0,z:0,w:8,d:8,h:0,color:'#58d8ae',kind:'start'},
+ {x:1,z:-8,w:4.4,d:4.4,h:.35,color:'#7aa8ff',gem:0},
+ {x:-1.6,z:-14,w:4,d:4,h:.75,color:'#ff8bc9',gem:1},
+ {x:1.6,z:-20,w:4.4,d:4.4,h:1.05,color:'#68dfd0',gem:2,checkpoint:true},
+ {x:-1.7,z:-26,w:4,d:4,h:1.45,color:'#a58aff',gem:3},
+ {x:1.4,z:-32,w:4.4,d:4.4,h:1.8,color:'#ffbf72',gem:4,checkpoint:true},
+ {x:0,z:-39,w:7,d:7,h:2.1,color:'#70e8bb',gem:5,finish:true}
+];
+const gems=level.filter(p=>p.gem!==undefined).map(p=>({x:p.x+(p.gem%2?-.7:.7),z:p.z,h:p.h+1.1,taken:false,index:p.gem}));
+const player={x:0,z:1.2,y:0,vy:0,ground:true,face:0};
+const input={w:false,a:false,s:false,d:false,space:false};
+let started=false,won=false,falls=0,elapsed=0,last=0,toastTimer=0,checkpoint=0,muted=false,audio=null;
+const SCALE=36, gravity=25,jumpPower=11.2,speed=7.1;
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+let cw=0,ch=0,dpr=1;
+function resize(){dpr=Math.min(devicePixelRatio||1,2);cw=canvas.clientWidth;ch=canvas.clientHeight;canvas.width=Math.floor(cw*dpr);canvas.height=Math.floor(ch*dpr);ctx.setTransform(dpr,0,0,dpr,0,0)}
+window.addEventListener('resize',resize);resize();
+function project(x,z,y=0){const s=SCALE;return {x:cw*.5+(x-z)*s*.72-(player.x-player.z)*s*.72,y:ch*.56+(x+z)*s*.36-y*s*.92-(player.x+player.z)*s*.36}}
+function poly(points,fill,stroke=null,width=1){ctx.beginPath();points.forEach((p,i)=>{const q=project(p[0],p[1],p[2]);i?ctx.lineTo(q.x,q.y):ctx.moveTo(q.x,q.y)});ctx.closePath();ctx.fillStyle=fill;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=width;ctx.stroke()}}
+function rectPlatform(p){const x=p.x,z=p.z,w=p.w,d=p.d,y=p.h,depth=.68, x1=x-w/2,x2=x+w/2,z1=z-d/2,z2=z+d/2;
+ const shade=p.color,side=shade+'';
+ // long outer shadow
+ poly([[x1,z1,-.12],[x2,z1,-.12],[x2,z2,-.12],[x1,z2,-.12]],'rgba(17,25,57,.19)');
+ // visible front and right faces
+ poly([[x1,z2,y],[x2,z2,y],[x2,z2,y-depth],[x1,z2,y-depth]],'#26395f');
+ poly([[x2,z1,y],[x2,z2,y],[x2,z2,y-depth],[x2,z1,y-depth]],'#344873');
+ poly([[x1,z1,y],[x2,z1,y],[x2,z2,y],[x1,z2,y]],shade,'rgba(255,255,255,.28)',1.2);
+ // subtle top decoration
+ const a=project(x,z,y+.025);ctx.fillStyle='rgba(255,255,255,.15)';ctx.beginPath();ctx.ellipse(a.x,a.y,w*SCALE*.18,d*SCALE*.075,-.45,0,Math.PI*2);ctx.fill();
+ // glowing edge stripe
+ poly([[x1,z2,y+.025],[x2,z2,y+.025],[x2,z2,y-.08],[x1,z2,y-.08]],'rgba(255,255,255,.1)');
+ if(p.kind==='start'){
+   for(let i=0;i<4;i++){const xx=x-2.7+i*1.8;const q=project(xx,z+2.25,y+.04);ctx.fillStyle=i%2?'rgba(255,255,255,.18)':'rgba(13,86,87,.16)';ctx.fillRect(q.x-9,q.y-2,18,4)}
+ }
+ if(p.checkpoint)drawCheckpoint(p);
+ if(p.finish)drawPortal(p);
+}
+function drawCheckpoint(p){const q=project(p.x,p.z,p.h+.1);ctx.save();ctx.translate(q.x,q.y);ctx.rotate(-.45);ctx.strokeStyle='#c2fff0aa';ctx.lineWidth=3;ctx.beginPath();ctx.ellipse(0,0,15,7,0,0,Math.PI*2);ctx.stroke();ctx.restore()}
+function drawPortal(p){const q=project(p.x,p.z-1,p.h+.15),pulse=.82+Math.sin(elapsed*3)*.06;ctx.save();ctx.translate(q.x,q.y-22);ctx.scale(pulse,1);ctx.lineWidth=6;ctx.strokeStyle='#76f6d2';ctx.shadowColor='#69ffdf';ctx.shadowBlur=23;ctx.beginPath();ctx.ellipse(0,0,22,35,0,0,Math.PI*2);ctx.stroke();ctx.shadowBlur=0;ctx.lineWidth=2;ctx.strokeStyle='#fff';ctx.beginPath();ctx.ellipse(0,0,14,26,0,0,Math.PI*2);ctx.stroke();ctx.restore();for(let i=0;i<3;i++){const r=project(p.x+(i-1)*.65,p.z-1,p.h+.06);ctx.fillStyle='#ffe99a';ctx.beginPath();ctx.arc(r.x,r.y,2.4,0,Math.PI*2);ctx.fill()}}
+function drawCloud(x,z,size,alpha=1){const q=project(x,z,-.75);ctx.save();ctx.globalAlpha=alpha;ctx.fillStyle='#f8fbff';ctx.shadowColor='#bde9ff';ctx.shadowBlur=14;for(const [dx,dy,r] of [[-1,2,12],[0,0,16],[1.2,2,13],[.3,4,13]]){ctx.beginPath();ctx.ellipse(q.x+dx*size,q.y+dy*size,r*size,r*.68*size,0,0,Math.PI*2);ctx.fill()}ctx.restore()}
+function drawGem(g){if(g.taken)return;const q=project(g.x,g.z,g.h+.16+Math.sin(elapsed*3+g.index)*.12);ctx.save();ctx.translate(q.x,q.y);ctx.rotate(elapsed*.8+g.index);ctx.shadowColor='#fff18a';ctx.shadowBlur=19;ctx.fillStyle='#ffe985';ctx.strokeStyle='#fff9ce';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(0,-10);ctx.lineTo(7,0);ctx.lineTo(0,10);ctx.lineTo(-7,0);ctx.closePath();ctx.fill();ctx.stroke();ctx.shadowBlur=0;ctx.restore();ctx.fillStyle='#fff8c4';ctx.beginPath();ctx.arc(q.x,q.y+13,2,0,Math.PI*2);ctx.fill()}
+function drawPlayer(){const bob=player.ground?Math.sin(elapsed*10)*.035:0,feet=player.y+bob;const p=project(player.x,player.z,feet);const scale=SCALE;ctx.save();ctx.translate(p.x,p.y);ctx.fillStyle='#13243b55';ctx.beginPath();ctx.ellipse(0,4,11,5,0,0,Math.PI*2);ctx.fill();
+ // blocky avatar body
+ const legY=-17,bodyY=-30-headless();ctx.fillStyle='#26375a';ctx.fillRect(-6,legY,5,13);ctx.fillRect(1,legY,5,13);
+ ctx.fillStyle='#ffcf75';ctx.fillRect(-9,bodyY,18,17);
+ ctx.fillStyle='#ff8a7f';ctx.fillRect(-12,bodyY+2,4,12);ctx.fillRect(8,bodyY+2,4,12);
+ ctx.fillStyle='#74e9cf';ctx.fillRect(-8,bodyY-14,16,15);
+ ctx.fillStyle='#ffe1b3';ctx.fillRect(-7,bodyY-27,14,13);
+ ctx.fillStyle='#5e4d8d';ctx.fillRect(-8,bodyY-29,16,5);ctx.fillRect(-8,bodyY-26,3,7);
+ ctx.fillStyle='#31415d';ctx.fillRect(-3,bodyY-22,2,2);ctx.fillRect(3,bodyY-22,2,2);
+ ctx.restore();}
+function headless(){return 0}
+function drawBackground(){const g=ctx.createLinearGradient(0,0,0,ch);g.addColorStop(0,'#1b2548');g.addColorStop(.52,'#465780');g.addColorStop(1,'#9aa8ca');ctx.fillStyle=g;ctx.fillRect(0,0,cw,ch);
+ // distant soft stars
+ for(let i=0;i<45;i++){let x=(i*173+42)%cw,y=(i*97+26)%(ch*.57);ctx.globalAlpha=.16+Math.sin(elapsed*.6+i)*.06;ctx.fillStyle='#fff';ctx.fillRect(x,y,1.5,1.5)}ctx.globalAlpha=1;
+ const horizon=ch*.64;const haze=ctx.createLinearGradient(0,horizon-65,0,ch);haze.addColorStop(0,'#b3c9ee00');haze.addColorStop(1,'#d7e6ff99');ctx.fillStyle=haze;ctx.fillRect(0,horizon-65,cw,ch-horizon+65);
+ // cloud banks
+ const offset=(player.z*.13)%cw;for(let i=-1;i<4;i++){drawCloud(i*cw*.4+offset,ch*.01,1.8,.22);drawCloud(i*cw*.45-offset,ch*.12,1.25,.18)}
+}
+function drawWorld(){drawBackground();const visible=level.filter(p=>Math.abs(p.x-player.x)<28&&Math.abs(p.z-player.z)<36).slice().sort((a,b)=>(b.x+b.z)-(a.x+a.z));visible.forEach(rectPlatform);gems.forEach(drawGem);drawPlayer();
+ // scattered particles along journey
+ for(let i=0;i<14;i++){const z=-i*3-3;const x=Math.sin(i*12.3)*8;const q=project(x,z,-.5);if(q.y>0&&q.y<ch){ctx.globalAlpha=.15+Math.abs(Math.sin(elapsed+i))*.22;ctx.fillStyle=i%2?'#bb9dff':'#8ffff0';ctx.beginPath();ctx.arc(q.x,q.y,2,0,Math.PI*2);ctx.fill()}}ctx.globalAlpha=1;
+}
+function platformUnder(x,z){for(const p of level){if(x>=p.x-p.w/2+.1&&x<=p.x+p.w/2-.1&&z>=p.z-p.d/2+.1&&z<=p.z+p.d/2-.1)return p}return null}
+function showToast(message){ui.toast.textContent=message;ui.toast.classList.add('show');toastTimer=2.1}
+function tone(freq=620,duration=.09,type='sine'){if(muted)return;try{audio??=new AudioContext();if(audio.state==='suspended')audio.resume();const o=audio.createOscillator(),gain=audio.createGain();o.type=type;o.frequency.value=freq;gain.gain.setValueAtTime(.07,audio.currentTime);gain.gain.exponentialRampToValueAtTime(.001,audio.currentTime+duration);o.connect(gain);gain.connect(audio.destination);o.start();o.stop(audio.currentTime+duration)}catch{}}
+function setGemUI(){ui.gems.textContent=`${gems.filter(g=>g.taken).length} / 6`}
+function timeText(seconds){const m=Math.floor(seconds/60),s=Math.floor(seconds%60);return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`}
+function loadBest(){const b=Number(localStorage.getItem('bulut-obby-best')||0);ui.best.textContent=b?timeText(b):'—'}
+loadBest();
+function doJump(){if(!started||won||!player.ground)return;player.vy=jumpPower;player.ground=false;tone(360,.12,'triangle')}
+function resetAtCheckpoint(){const p=level[checkpoint];player.x=p.x;player.z=p.z+(checkpoint===0?1:0);player.y=p.h;player.vy=0;player.ground=true;falls++;ui.falls.textContent=falls;showToast(checkpoint?'Kontrol noktasına döndün!':'Bir daha dene!');tone(180,.2,'sawtooth')}
+function update(dt){if(!started||won)return;elapsed+=dt;if(toastTimer>0){toastTimer-=dt;if(toastTimer<=0)ui.toast.classList.remove('show')}
+ let dx=(input.d?1:0)-(input.a?1:0),dz=(input.s?1:0)-(input.w?1:0);const len=Math.hypot(dx,dz)||1;dx/=len;dz/=len;
+ const oldX=player.x,oldZ=player.z,oldY=player.y;player.x+=dx*speed*dt;player.z+=dz*speed*dt;
+ if(dx||dz)player.face=Math.atan2(dz,dx);
+ if(player.ground){const floor=platformUnder(player.x,player.z);if(floor){player.y=floor.h;if(floor.checkpoint){const idx=level.indexOf(floor);if(idx>checkpoint){checkpoint=idx;showToast('✦ Kontrol noktası kaydedildi');tone(760,.18)}}}else{player.ground=false;player.vy=0}}
+ if(!player.ground){player.vy-=gravity*dt;player.y+=player.vy*dt;if(player.vy<=0){for(const p of level){const inside=player.x>=p.x-p.w/2+.05&&player.x<=p.x+p.w/2-.05&&player.z>=p.z-p.d/2+.05&&player.z<=p.z+p.d/2-.05;if(inside&&oldY>=p.h&&player.y<=p.h){player.y=p.h;player.vy=0;player.ground=true;if(p.checkpoint){const idx=level.indexOf(p);if(idx>checkpoint){checkpoint=idx;showToast('✦ Kontrol noktası kaydedildi');tone(760,.18)}}break}}}}
+ // Crystal pickup
+ for(const g of gems){if(g.taken)continue;const p=level.find(item=>item.gem===g.index);if(Math.hypot(player.x-g.x,player.z-g.z)<1.05&&player.ground&&Math.abs(player.y-p.h)<.4){g.taken=true;setGemUI();showToast(['Işıltılı!','Harika buluş!','Kristal senin!'][g.index%3]);tone(720+g.index*70,.16,'sine')}}
+ // Fall recovery
+ if(player.y < -10 || Math.abs(player.x)>35 || player.z>15){resetAtCheckpoint()}
+ // Portal needs all crystals
+ const finish=level[level.length-1];if(player.ground&&platformUnder(player.x,player.z)===finish&&Math.hypot(player.x-finish.x,player.z-(finish.z-1))<1.6){if(gems.every(g=>g.taken)){winGame()}else if(Math.random()<.018){showToast(`${6-gems.filter(g=>g.taken).length} kristal daha gerekli!`)}}
+ ui.timer.textContent=timeText(elapsed);
+}
+function winGame(){won=true;const old=Number(localStorage.getItem('bulut-obby-best')||0);if(!old||elapsed<old){localStorage.setItem('bulut-obby-best',String(Math.floor(elapsed)));loadBest()}tone(900,.3,'sine');setTimeout(()=>tone(1200,.4,'sine'),120);ui.overlay.innerHTML=`<div class="card"><span class="eyebrow"><i></i> ADA TAMAMLANDI</span><h1>Bulutların<br><span>şampiyonu!</span></h1><p>Tüm kristalleri topladın ve portala ulaştın. Bu gökyüzü artık senin!</p><div class="feature-row"><span class="feature">✦ 6 / 6 kristal</span><span class="feature">⏱ ${timeText(elapsed)}</span><span class="feature">↻ ${falls} düşüş</span></div><button class="primary" id="again">YENİDEN OYNA&nbsp; ↻</button><span class="micro">En iyi süre: ${ui.best.textContent}</span></div>`;ui.overlay.classList.remove('hidden');document.getElementById('again').onclick=restart}
+function restart(){for(const g of gems)g.taken=false;setGemUI();falls=0;elapsed=0;checkpoint=0;ui.falls.textContent='0';ui.timer.textContent='00:00';player.x=0;player.z=1.2;player.y=0;player.vy=0;player.ground=true;won=false;started=true;ui.overlay.classList.add('hidden')}
+function frame(now){const dt=Math.min(.033,(now-last)/1000||0);last=now;update(dt);drawWorld();requestAnimationFrame(frame)}
+requestAnimationFrame(frame);
+function begin(){if(won){restart();return}if(!started){started=true;ui.overlay.classList.add('hidden');tone(520,.1)}}
+document.getElementById('start').addEventListener('click',begin);
+window.addEventListener('keydown',e=>{const k=e.key.toLowerCase();if(['w','a','s','d','arrowup','arrowdown','arrowleft','arrowright',' '].includes(k))e.preventDefault();if(k===' '||k==='arrowup'&&e.shiftKey){if(!input.space){input.space=true;doJump()}return}const map={arrowup:'w',arrowdown:'s',arrowleft:'a',arrowright:'d'};if(map[k])input[map[k]]=true;else if(input[k]!==undefined)input[k]=true;if(k==='enter'&&!started)begin()});
+window.addEventListener('keyup',e=>{const k=e.key.toLowerCase(),map={arrowup:'w',arrowdown:'s',arrowleft:'a',arrowright:'d'};if(map[k])input[map[k]]=false;else if(input[k]!==undefined)input[k]=false;if(k===' ')input.space=false});
+window.addEventListener('blur',()=>Object.keys(input).forEach(k=>input[k]=false));
+document.querySelectorAll('.touch-btn').forEach(button=>{const key=button.dataset.key,press=e=>{e.preventDefault();button.classList.add('down');if(key==='space')doJump();else input[key]=true},release=e=>{e.preventDefault();button.classList.remove('down');if(key!=='space')input[key]=false};button.addEventListener('pointerdown',press);button.addEventListener('pointerup',release);button.addEventListener('pointercancel',release);button.addEventListener('pointerleave',release)});
+document.getElementById('sound').addEventListener('click',e=>{muted=!muted;e.currentTarget.textContent=muted?'♫̸':'♫';e.currentTarget.setAttribute('aria-label',muted?'Sesi aç':'Sesi kapat');if(!muted)tone(650,.1)});
+})();
+</script>
+</body>
+</html>
